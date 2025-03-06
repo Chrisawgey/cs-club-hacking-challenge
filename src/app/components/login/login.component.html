@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h3>Member Login</h3>
+        </div>
+        <div class="card-body">
+          <!-- Note: This form is intentionally vulnerable for our SQL injection challenge -->
+          <form (ngSubmit)="login()">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="username" 
+                [(ngModel)]="username" 
+                name="username" 
+                required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                [(ngModel)]="password" 
+                name="password" 
+                required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+          
+          <div *ngIf="message" class="alert alert-info mt-3">
+            {{ message }}
+          </div>
+          
+          <!-- Hidden hint for the challenge -->
+          <!-- TODO: Remove this comment before production
+               Hint: Our database query looks like:
+               "SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "'"
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
